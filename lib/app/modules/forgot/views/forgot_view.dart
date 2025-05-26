@@ -80,7 +80,6 @@ class ForgotView extends GetView<ForgotController> {
                 //       onPressed: controller.canResend
                 //           ? () {
                 //               controller.startResendTimer();
-                //               // TODO: Add resend OTP logic here
                 //             }
                 //           : null,
                 //       style: ElevatedButton.styleFrom(

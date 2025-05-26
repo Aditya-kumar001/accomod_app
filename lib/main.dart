@@ -10,6 +10,7 @@ void main() {
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
+      // home: CustomBottomNavigation(),
       getPages: AppPages.routes,
     ),
   );

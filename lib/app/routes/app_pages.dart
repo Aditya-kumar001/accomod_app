@@ -1,3 +1,4 @@
+import 'package:accomodation_app/widgets/custom_bottom_navigation.dart';
 import 'package:get/get.dart';
 
 import '../modules/first/bindings/first_binding.dart';
@@ -8,10 +9,18 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/init_forgot/bindings/init_forgot_binding.dart';
 import '../modules/init_forgot/views/init_forgot_view.dart';
+import '../modules/payment/bindings/payment_binding.dart';
+import '../modules/payment/views/payment_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
+import '../modules/rent_transport/bindings/rent_transport_binding.dart';
+import '../modules/rent_transport/views/rent_transport_view.dart';
 import '../modules/sign_in/bindings/sign_in_binding.dart';
 import '../modules/sign_in/views/sign_in_view.dart';
 import '../modules/sign_up/bindings/sign_up_binding.dart';
 import '../modules/sign_up/views/sign_up_view.dart';
+import '../modules/transport/bindings/transport_binding.dart';
+import '../modules/transport/views/transport_view.dart';
 import '../modules/verify/bindings/verify_binding.dart';
 import '../modules/verify/views/verify_view.dart';
 
@@ -20,12 +29,12 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SIGN_UP;
+  static const INITIAL = Routes.SIGN_IN;
 
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => const HomeView(),
+      page: () => CustomBottomNavigation(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -57,6 +66,26 @@ class AppPages {
       name: _Paths.INIT_FORGOT,
       page: () => const InitForgotView(),
       binding: InitForgotBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.TRANSPORT,
+      page: () => const TransportView(),
+      binding: TransportBinding(),
+    ),
+    GetPage(
+      name: _Paths.RENT_TRANSPORT,
+      page: () => const RentTransportView(),
+      binding: RentTransportBinding(),
+    ),
+    GetPage(
+      name: _Paths.PAYMENT,
+      page: () => const PaymentView(),
+      binding: PaymentBinding(),
     ),
   ];
 }

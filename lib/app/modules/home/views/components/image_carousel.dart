@@ -15,8 +15,8 @@ class ImageCarousel extends StatefulWidget {
     required this.height,
     this.borderRadius = 18,
     this.autoPlayInterval = const Duration(milliseconds: 3500), // 3.5 seconds
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<ImageCarousel> createState() => _ImageCarouselState();

@@ -32,8 +32,5 @@ class VerifyController extends GetxController {
     _timer?.cancel();
     super.onClose();
   }
-  @override
-  void onReady() {
-    super.onReady();
-  }
+
 }

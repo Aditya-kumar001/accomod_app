@@ -1,12 +1,11 @@
-
-
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../controllers/home_controller.dart';
+import 'components/ac_toggle.dart';
 import 'components/guest_picker.dart';
 import 'components/image_carousel.dart';
+import 'components/image_context.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -118,7 +117,7 @@ class HomeView extends GetView<HomeController> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
                   ),
-                  _buildPlaceImage(
+                  buildPlaceImage(
                     imageUrls: [
                       // Replace these with your own image URLs or asset paths
                       'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
@@ -139,7 +138,7 @@ class HomeView extends GetView<HomeController> {
                       "siufdhg"
                       "sdfjg",
                       "siufdhg"
-                    ]
+                    ], context: context
                   ),
                 ],
               ),
@@ -168,7 +167,7 @@ class HomeView extends GetView<HomeController> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
                   ),
-                  _buildPlaceImage(
+                  buildPlaceImage(
                     imageUrls: [
                       // Replace these with your own image URLs or asset paths
                       'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
@@ -189,7 +188,7 @@ class HomeView extends GetView<HomeController> {
                       "siufdhg"
                       "sdfjg",
                       "siufdhg"
-                    ]
+                    ], context: context
                   ),
                 ],
               ),
@@ -218,7 +217,7 @@ class HomeView extends GetView<HomeController> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
                   ),
-                  _buildPlaceImage(
+                  buildPlaceImage(
                     imageUrls: [
                       // Replace these with your own image URLs or asset paths
                       'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
@@ -239,7 +238,7 @@ class HomeView extends GetView<HomeController> {
                       "siufdhg"
                       "sdfjg",
                       "siufdhg"
-                    ]
+                    ], context: context
                   ),
                 ],
               ),
@@ -270,7 +269,7 @@ class HomeView extends GetView<HomeController> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
                   ),
-                  _buildPlaceImage(
+                  buildPlaceImage(
                     imageUrls: [
                       // Replace these with your own image URLs or asset paths
                       'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
@@ -291,7 +290,7 @@ class HomeView extends GetView<HomeController> {
                       "siufdhg"
                       "sdfjg",
                       "siufdhg"
-                    ]
+                    ], context: context
                   ),
                 ],
               ),
@@ -300,73 +299,23 @@ class HomeView extends GetView<HomeController> {
         ),
       ),
       floatingActionButton: Obx(() => !controller.showPreference.value
-          ? FloatingActionButton.extended(
-              icon: Icon(Icons.tune),
-              label: Text('Set Preference'),
-              backgroundColor: Colors.blue,
-              foregroundColor: Colors.white,
-              onPressed: () => controller.showPreferenceValue(),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            )
-          : SizedBox.shrink()),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   currentIndex: 0,
-      //   items: const [
-      //     BottomNavigationBarItem(icon: Icon(Icons.bed), label: 'Rooms'),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.directions_car), label: 'Car booking'),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.local_car_wash), label: 'Car washing'),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.person), label: 'My profile'),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.settings), label: 'Settings'),
-      //   ],
-      // ),
+        ? FloatingActionButton.extended(
+            icon: Icon(Icons.tune),
+            label: Text('Set Preference'),
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+            onPressed: () => controller.showPreferenceValue(),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          )
+        : SizedBox.shrink()
+      ),
     );
   }
   
     
-  Widget _buildPlaceImage({
-    required List<String> imageUrls,
-    required List<String> placeNames,
-  }) {
-    // Ensure both lists are of the same length
-    final int itemCount = imageUrls.length < placeNames.length ? imageUrls.length : placeNames.length;
-
-    return SizedBox(
-      height: 120,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: itemCount,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Column(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    imageUrls[index],
-                    width: 80,
-                    height: 80,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  placeNames[index],
-                  style: TextStyle(fontSize: 12),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
+  
 
 
 
@@ -389,8 +338,6 @@ class HomeView extends GetView<HomeController> {
       autoPlayInterval: const Duration(milliseconds: 1500),
     );
   }
-
-  // --- REMAINDER OF YOUR CODE UNCHANGED ---
 
   Widget buildLocationField() {
     return Obx(() => TextFormField(
@@ -430,15 +377,5 @@ class HomeView extends GetView<HomeController> {
         },
       );
     });
-  }
-
-  
-
-  Widget buildAirConditionedSwitch() {
-    return Obx(() => SwitchListTile(
-      title: Text('Air conditioned'),
-      value: controller.isAirConditioned.value,
-      onChanged: controller.isAirConditioned,
-    ));
   }
 }
