@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
+
 class HomeController extends GetxController {
 
   var selectedTab = 'Hotels'.obs;
@@ -12,7 +14,17 @@ class HomeController extends GetxController {
   var isAirConditioned = true.obs;
   final showPreference = false.obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
   void showPreferenceValue () {
+    showPreference.value = !showPreference.value;
+  }
+
+  void searchResult(){
+    Get.toNamed(Routes.SEARCH_ROOM_LIST);
     showPreference.value = !showPreference.value;
   }
 
@@ -37,11 +49,4 @@ class HomeController extends GetxController {
     children.value = c;
     rooms.value = r;
   }
-
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
 }

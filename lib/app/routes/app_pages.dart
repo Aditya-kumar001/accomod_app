@@ -1,12 +1,11 @@
-import 'package:accomodation_app/widgets/custom_bottom_navigation.dart';
 import 'package:get/get.dart';
 
+import '../../widgets/custom_bottom_navigation.dart';
 import '../modules/first/bindings/first_binding.dart';
 import '../modules/first/views/first_view.dart';
 import '../modules/forgot/bindings/forgot_binding.dart';
 import '../modules/forgot/views/forgot_view.dart';
 import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
 import '../modules/init_forgot/bindings/init_forgot_binding.dart';
 import '../modules/init_forgot/views/init_forgot_view.dart';
 import '../modules/payment/bindings/payment_binding.dart';
@@ -15,6 +14,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/rent_transport/bindings/rent_transport_binding.dart';
 import '../modules/rent_transport/views/rent_transport_view.dart';
+import '../modules/search_room_list/bindings/search_room_list_binding.dart';
+import '../modules/search_room_list/views/search_room_list_view.dart';
 import '../modules/sign_in/bindings/sign_in_binding.dart';
 import '../modules/sign_in/views/sign_in_view.dart';
 import '../modules/sign_up/bindings/sign_up_binding.dart';
@@ -44,7 +45,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SIGN_IN,
-      page: () => const SignInView(),
+      page: () => SignInView(),
       binding: SignInBinding(),
     ),
     GetPage(
@@ -86,6 +87,11 @@ class AppPages {
       name: _Paths.PAYMENT,
       page: () => const PaymentView(),
       binding: PaymentBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEARCH_ROOM_LIST,
+      page: () => const SearchRoomListView(),
+      binding: SearchRoomListBinding(),
     ),
   ];
 }

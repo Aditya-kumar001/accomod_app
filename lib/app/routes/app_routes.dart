@@ -14,6 +14,7 @@ abstract class Routes {
   static const TRANSPORT = _Paths.TRANSPORT;
   static const RENT_TRANSPORT = _Paths.RENT_TRANSPORT;
   static const PAYMENT = _Paths.PAYMENT;
+  static const SEARCH_ROOM_LIST = _Paths.SEARCH_ROOM_LIST;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const TRANSPORT = '/transport';
   static const RENT_TRANSPORT = '/rent-transport';
   static const PAYMENT = '/payment';
+  static const SEARCH_ROOM_LIST = '/search-room-list';
 }

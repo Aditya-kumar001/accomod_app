@@ -70,7 +70,7 @@ class HomeView extends GetView<HomeController> {
                         buildAirConditionedSwitch(),
                         const SizedBox(height: 10),
                         ElevatedButton(
-                          onPressed: () => controller.showPreferenceValue(),
+                          onPressed: () => controller.searchResult(),
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(double.infinity, 48),
                               elevation: 8,
